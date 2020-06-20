@@ -1,15 +1,22 @@
 package nl.farawaytravels.useradmin.controller;
 
+import nl.farawaytravels.useradmin.dto.AuthUser;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Lists Api's for User Admin
  *
- * @author Debidutt Prasad (C39392)
+ * @author DP
  */
 @RestController
 public class UserAdminController {
+
+  @RequestMapping("/")
+  public String healthCheck(){
+    return "OK";
+  }
 
   /**
    * Authenticates User of fawt portal
@@ -19,16 +26,18 @@ public class UserAdminController {
    * @return true if the credentials are valid
    */
   @PostMapping(value = "user/auth")
-  public boolean authenticateUser(String userName, String password) {
+  public AuthUser authenticateUser(String userName, String password) {
+    AuthUser authUser = new AuthUser();
     if (userName.equals("fawt")) {
       if (password.equals("Lets@2020")) {
-        return true;
+        authUser.setAuthenticated(true);
       } else {
-        return false;
+        authUser.setAuthenticated(false);
       }
     } else {
-      return false;
+      authUser.setAuthenticated(false);
     }
+    return authUser;
   }
 
 }
