@@ -40,12 +40,10 @@ public class CustomerInfoController {
     return new String(data);
   }
 
-  @PostMapping("/register")
-
+  @PostMapping(value = "/register")
   public ResponseEntity<Void> registerCustomer(@RequestBody CustomerInfo fetchCustomerInfo)
       throws JsonProcessingException {
     logger.info("customer details "+fetchCustomerInfo);
-//    CustomerInfo customerInfo = new ObjectMapper().readValue(fetchCustomerInfo.toString(),CustomerInfo.class);
     new RegisterCustomer().registerCustomer(fetchCustomerInfo);
     return new ResponseEntity<>(HttpStatus.CREATED);
   }

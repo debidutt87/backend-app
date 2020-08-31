@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "aws.rds.hostname",
+      "type": "java.lang.String",
+      "description": "Description for aws.rds.hostname."
+    },
+    {
+      "name": "aws.rds.dbname",
+      "type": "java.lang.String",
+      "description": "Description for aws.rds.dbname."
+    },
+    {
+      "name": "aws.rds.username",
+      "type": "java.lang.String",
+      "description": "Description for aws.rds.username."
+    },
+    {
+      "name": "aws.rds.password",
+      "type": "java.lang.String",
+      "description": "Description for aws.rds.password."
+    },
+    {
+      "name": "aws.rds.port",
+      "type": "java.lang.String",
+      "description": "Description for aws.rds.port."
+    }
+  ] }

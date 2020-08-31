@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -57,12 +55,14 @@ public class DBUtility {
   }
 
    public Connection getRemoteConnection() {
-    if (rdsDbHostname != null) {
+//    if (rdsDbHostname != null) {
       try {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+//        String jdbcUrl =
+//            "jdbc:mysql://" + rdsDbHostname + ":" + rdsPort + "/" + rdsDbName + "?user=" + rdsUsername
+//                + "&password=" + rdsPassword;
         String jdbcUrl =
-            "jdbc:mysql://" + rdsDbHostname + ":" + rdsPort + "/" + rdsDbName + "?user=" + rdsUsername
-                + "&password=" + rdsPassword;
+            "jdbc:mysql://fat-customers-info.cjc6hmkwvudc.eu-west-3.rds.amazonaws.com:3306/Customer_Info?user=admin&password=Lets2020";
         logger.info("Getting remote connection with connection string from environment variables.");
         Connection con = DriverManager.getConnection(jdbcUrl);
         logger.info("Remote connection successful.");
@@ -72,7 +72,7 @@ public class DBUtility {
       } catch (SQLException e) {
         logger.warning(e.toString());
       }
-    }
+//    }
     return null;
   }
 
